@@ -5,6 +5,7 @@ import "@/lib/core/poller";
 import NextTopLoader from "nextjs-toploader";
 import {ThemeProvider} from "@/components/theme-provider";
 import {NotificationBanner} from "@/components/notification-banner";
+import {SakuraBg} from "@/components/sakura-bg";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,7 +49,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextTopLoader color="var(--foreground)" showSpinner={false} />
+        <SakuraBg />
+        <NextTopLoader color="#ff8fab" showSpinner={false} />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
