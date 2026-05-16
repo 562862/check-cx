@@ -139,3 +139,65 @@
     pointer-events: none;
   }
 }
+
+
+/* ===== Sakura Theme / 樱花主题 ===== */
+body {
+  background:
+    radial-gradient(ellipse at 15% 60%, rgba(255, 182, 193, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 15%, rgba(255, 218, 224, 0.22) 0%, transparent 55%),
+    linear-gradient(160deg, #fff9fb 0%, #fdeef5 35%, #fce5ef 65%, #fdf3f8 100%);
+  background-attachment: fixed;
+}
+
+.dark body {
+  background:
+    radial-gradient(ellipse at 15% 60%, rgba(180, 60, 90, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 15%, rgba(160, 50, 80, 0.06) 0%, transparent 55%),
+    linear-gradient(160deg, #14080c 0%, #1e0c13 35%, #190a10 65%, #14080c 100%);
+  background-attachment: fixed;
+}
+
+/* 樱花飘落层 */
+.sakura-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* 花瓣形状 */
+.sakura-petal {
+  position: absolute;
+  top: -20px;
+  background: radial-gradient(ellipse at 35% 30%, #ffd6e0 0%, #ffb3c6 45%, #ff8fab 100%);
+  border-radius: 50% 0 50% 0;
+  box-shadow: 0 1px 6px rgba(255, 143, 171, 0.25);
+  animation: sakura-fall linear infinite;
+  opacity: 0;
+}
+
+.dark .sakura-petal {
+  background: radial-gradient(ellipse at 35% 30%, #c45070 0%, #a83858 45%, #8c2a46 100%);
+  box-shadow: 0 1px 6px rgba(168, 56, 88, 0.2);
+}
+
+@keyframes sakura-fall {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) translateX(0px) rotate(0deg) scale(1);
+  }
+  8%  { opacity: 0.8; }
+  90% { opacity: 0.55; }
+  100% {
+    opacity: 0;
+    transform: translateY(108vh) translateX(var(--drift, 50px)) rotate(600deg) scale(0.5);
+  }
+}
+
+/* 内容层置于花瓣之上 */
+body > * {
+  position: relative;
+  z-index: 1;
+}
